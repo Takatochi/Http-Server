@@ -2,6 +2,7 @@ package server
 
 import (
 	"context"
+	"htt-server/internal"
 	"net/http"
 )
 
@@ -30,7 +31,7 @@ func NewHttp(addr string) *Http {
 }
 
 func (h *Http) Start() error {
-	return h.server.ListenAndServe()
+	return internal.NewError(1, "Server error", h.server.ListenAndServe())
 }
 
 func (h *Http) Stop(ctx context.Context) error {
